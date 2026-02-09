@@ -1,0 +1,269 @@
+/* GENERAL */
+* { 
+    margin:0; 
+    padding:0; 
+    box-sizing:border-box; 
+    font-family:'Poppins',sans-serif; 
+    scroll-behavior: smooth;
+}
+
+body { 
+    min-height:100vh; 
+    background: linear-gradient(135deg,#f5f7fa,#e4e7eb); /* subtle shuttle gradient */
+    color:#1b1b2f; 
+}
+
+a { 
+    text-decoration:none; 
+    color:inherit; 
+}
+
+/* NAVBAR */
+.navbar { 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    padding:15px 50px; 
+    background-color:#ffffffcc; 
+    box-shadow:0 2px 8px rgba(0,0,0,0.1); 
+    position:sticky; 
+    top:0; 
+    z-index:1000; 
+    border-radius:0 0 10px 10px; 
+}
+
+.navbar .logo { 
+    font-family:'Playfair Display', serif; 
+    font-size:24px; 
+    font-weight:bold; 
+    display:flex; 
+    align-items:center; 
+}
+
+.logo-img { 
+    width:50px; 
+    height:50px; 
+    margin-right:10px; 
+}
+
+.navbar nav a { 
+    margin-left:25px; 
+    font-weight:500; 
+    transition:0.3s; 
+    color:#1b1b2f; 
+}
+
+.navbar nav a:hover { 
+    color:#ffdd57; 
+}
+
+/* HERO */
+.hero { 
+    text-align:center; 
+    padding:120px 20px 60px; 
+}
+
+.hero h1 { 
+    font-family:'Playfair Display', serif; 
+    font-size:50px; 
+    color:#1b1b2f; 
+    margin-bottom:15px; 
+}
+
+.hero p { 
+    font-size:20px; 
+    color:#333; 
+    margin-bottom:25px; 
+}
+
+.hero-buttons .btn-primary, 
+.hero-buttons .btn-secondary { 
+    padding:12px 30px; 
+    margin:5px; 
+    border-radius:25px; 
+    border:none; 
+    cursor:pointer; 
+    font-weight:600; 
+    transition:0.3s; 
+}
+
+/* Make both buttons highly visible */
+.btn-primary { 
+    background:#ffdd57; 
+    color:#1b1b2f; 
+}
+
+.btn-primary:hover { 
+    background:#ffc700; 
+}
+
+/* Secondary button also visible but slightly different style */
+.btn-secondary { 
+    background:rgba(255,221,87,0.2); /* light yellow tint */ 
+    border:2px solid #ffdd57; 
+    color:#1b1b2f; 
+}
+
+.btn-secondary:hover { 
+    background:#ffdd57; 
+    color:#1b1b2f; 
+}
+
+/* EVENTS */
+.events { 
+    padding:80px 50px; 
+    text-align:center; 
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+}
+
+.events h2 { 
+    font-family:'Playfair Display', serif; 
+    font-size:36px; 
+    color:#1b1b2f; 
+    margin-bottom:40px; 
+}
+
+/* Grid layout for side-by-side event cards */
+.event-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px; 
+    width: 100%;
+    max-width: 1200px; 
+    justify-items: center;
+}
+
+.event-card { 
+    background:#ffffff; 
+    border-radius:15px; 
+    padding:15px; 
+    color:#1b1b2f; 
+    box-shadow:0 8px 20px rgba(0,0,0,0.1); 
+    transition:0.3s; 
+    width: 100%; 
+}
+
+.event-card:hover { 
+    background:#fefefe; 
+    transform: translateY(-5px);
+}
+
+.poster img { 
+    width:100%; 
+    height:160px; 
+    object-fit:cover; 
+    border-radius:12px; 
+}
+
+.event-card h3 { 
+    margin:15px 0 8px; 
+    font-size:20px; 
+}
+
+.event-card p { 
+    margin-bottom:10px; 
+    font-size:16px; 
+}
+
+/* FORMS */
+.form-section { 
+    padding:80px 50px; 
+    display:flex; 
+    justify-content:center; 
+    flex-direction:column; 
+    align-items:center; 
+}
+
+.form-card { 
+    background:#ffffff; 
+    padding:40px; 
+    border-radius:20px; 
+    max-width:500px; 
+    width:100%; 
+    text-align:center; 
+    color:#1b1b2f; 
+    box-shadow:0 12px 30px rgba(0,0,0,0.15); 
+    border:1px solid #ddd; 
+}
+
+.form-card h2 { 
+    font-family:'Playfair Display', serif; 
+    margin-bottom:25px; 
+}
+
+.form-card input, 
+.form-card select, 
+.form-card textarea { 
+    width:100%; 
+    padding:12px 15px; 
+    margin-bottom:15px; 
+    border-radius:12px; 
+    border:1px solid #ccc; 
+    outline:none; 
+    font-size:16px; 
+    transition:0.3s;
+}
+
+/* Input focus effect */
+.form-card input:focus, 
+.form-card select:focus, 
+.form-card textarea:focus {
+    border-color:#ffdd57;
+    box-shadow:0 0 5px rgba(255,221,87,0.5);
+}
+
+.form-card textarea { 
+    resize:vertical; 
+    min-height:100px; 
+}
+
+.form-card button { 
+    width:100%; 
+    padding:12px 0; 
+    border-radius:25px; 
+    border:none; 
+    font-weight:600; 
+    cursor:pointer; 
+}
+
+.btn-primary.full { 
+    background:#ffdd57; 
+    color:#1b1b2f; 
+}
+
+.btn-primary.full:hover { 
+    background:#ffc700; 
+}
+
+.error { 
+    color:#ff6b6b; 
+    font-size:14px; 
+    text-align:left; 
+}
+
+/* HIDDEN */
+.hidden { 
+    display:none; 
+}
+
+/* FOOTER */
+.footer { 
+    text-align:center; 
+    padding:20px 0; 
+    background:#ffffffcc; 
+    font-size:14px; 
+    color:#1b1b2f; 
+    border-radius:10px 10px 0 0; 
+    box-shadow:0 -2px 10px rgba(0,0,0,0.05); 
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){ 
+    .navbar{ flex-direction:column; } 
+    .navbar nav a{ margin:10px 0; } 
+    .hero h1{ font-size:36px; } 
+    .hero p{ font-size:18px; } 
+    .event-grid{ grid-template-columns:1fr; } 
+}

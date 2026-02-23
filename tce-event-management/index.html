@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>TCE Event Management System</title>
+<meta charset="UTF-8">
+<title>TCE Event Management System</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
 <header class="navbar">
-    <div class="logo">
-        <img src="assets/images/logo.png" alt="TCE Logo" class="logo-img">
+    <div class="logo" id="logo">
+        <img src="assets/images/logo.png" class="logo-img">
         TCE EventHub
     </div>
     <nav>
@@ -28,53 +26,56 @@
     </nav>
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 <section id="home" class="hero">
     <h1>Thiagaraja College of Engineering</h1>
     <p>Centralized Event Management Portal</p>
     <div class="hero-buttons">
-        <button class="btn-primary">View Events</button>
-        <button class="btn-secondary">Register</button>
+        <button id="viewEventsBtn" class="btn-primary">View Events</button>
+        <button id="registerBtn" class="btn-secondary">Register</button>
     </div>
 </section>
 
-<!-- ================= EVENTS ================= -->
+<!-- EVENTS -->
 <section id="events" class="events">
     <h2>Upcoming Events</h2>
-    <div class="event-grid">
+    <div class="event-grid" id="eventGrid">
+
         <div class="event-card">
-            <div class="poster"><img src="assets/images/event1.jpg" alt="Technical Symposium"></div>
+            <div class="poster">
+                <img src="assets/images/event1.jpg">
+            </div>
             <h3>Technical Symposium</h3>
             <p>12 March 2026</p>
             <button class="btn-primary">Register</button>
         </div>
+
         <div class="event-card">
-            <div class="poster"><img src="assets/images/event2.jpg" alt="AI Workshop"></div>
+            <div class="poster">
+                <img src="assets/images/event2.jpg">
+            </div>
             <h3>AI Workshop</h3>
             <p>18 March 2026</p>
             <button class="btn-primary">Register</button>
         </div>
+
         <div class="event-card">
-            <div class="poster"><img src="assets/images/event3.jpg" alt="Cultural Fest"></div>
+            <div class="poster">
+                <img src="assets/images/event3.jpg">
+            </div>
             <h3>Cultural Fest</h3>
             <p>25 March 2026</p>
             <button class="btn-primary">Register</button>
         </div>
-        <div class="event-card">
-            <div class="poster"><img src="assets/images/poster-placeholder.jpg" alt="Coming Soon"></div>
-            <h3>Upcoming Event</h3>
-            <p>Coming Soon</p>
-            <button class="btn-primary">Register</button>
-        </div>
+
     </div>
 </section>
 
-<!-- ================= LOGIN FORM ================= -->
+<!-- LOGIN -->
 <section id="login-section" class="form-section hidden">
     <div class="form-card">
         <h2>Login</h2>
         <form id="loginForm">
-            <label for="loginType">Login Type:</label>
             <select id="loginType">
                 <option value="student">Student</option>
                 <option value="admin">Admin</option>
@@ -89,33 +90,23 @@
 
             <button type="submit" class="btn-primary full">Login</button>
         </form>
-
-        <a href="#" class="link">Forgot Password?</a>
     </div>
 </section>
 
-<!-- ================= STUDENT REGISTRATION ================= -->
+<!-- STUDENT REGISTER -->
 <section id="register-section" class="form-section hidden">
     <div class="form-card">
         <h2>Student Registration</h2>
         <form id="studentForm">
+
             <input type="text" id="fullName" placeholder="Full Name">
             <small class="error" id="nameError"></small>
 
             <input type="text" id="regNo" placeholder="Register Number">
             <small class="error" id="regError"></small>
 
-            <input type="text" id="department" placeholder="Department">
-            <small class="error" id="deptError"></small>
-
-            <input type="text" id="year" placeholder="Year">
-            <small class="error" id="yearError"></small>
-
             <input type="email" id="email" placeholder="TCE Email">
             <small class="error" id="emailError"></small>
-
-            <input type="text" id="mobile" placeholder="Mobile Number">
-            <small class="error" id="mobileError"></small>
 
             <input type="password" id="stuPassword" placeholder="Password">
             <small class="error" id="stuPassError"></small>
@@ -128,85 +119,30 @@
     </div>
 </section>
 
-<!-- ================= VOLUNTEER REGISTRATION ================= -->
-<section id="volunteer-section" class="form-section hidden">
-    <div class="form-card">
-        <h2>Volunteer Registration</h2>
-        <form id="volunteerForm">
-            <input type="text" id="volName" placeholder="Full Name">
-            <small class="error" id="volNameError"></small>
-
-            <input type="text" id="volRegNo" placeholder="Register Number">
-            <small class="error" id="volRegError"></small>
-
-            <input type="text" id="volDept" placeholder="Department">
-            <small class="error" id="volDeptError"></small>
-
-            <input type="text" id="volRole" placeholder="Preferred Role">
-            <small class="error" id="volRoleError"></small>
-
-            <input type="text" id="volSlot" placeholder="Available Time Slot">
-            <small class="error" id="volSlotError"></small>
-
-            <input type="text" id="volContact" placeholder="Contact Number">
-            <small class="error" id="volContactError"></small>
-
-            <button type="submit" class="btn-primary full">Apply as Volunteer</button>
-        </form>
-    </div>
-</section>
-
-<!-- ================= ADMIN EVENT CREATION ================= -->
+<!-- ADMIN -->
 <section id="admin-section" class="form-section hidden">
     <div class="form-card">
-        <h2>Admin: Event Creation</h2>
+        <h2>Create Event</h2>
         <form id="adminForm">
+
             <input type="text" id="eventName" placeholder="Event Name">
             <small class="error" id="eventNameError"></small>
 
             <input type="date" id="eventDate">
             <small class="error" id="eventDateError"></small>
 
-            <input type="text" id="eventVenue" placeholder="Venue">
-            <small class="error" id="eventVenueError"></small>
-
-            <input type="number" id="eventFee" placeholder="Fee">
-            <small class="error" id="eventFeeError"></small>
-
             <input type="file" id="eventImage">
             <small class="error" id="eventImageError"></small>
-
-            <textarea id="eventDesc" placeholder="Event Description"></textarea>
-            <small class="error" id="eventDescError"></small>
 
             <button type="submit" class="btn-primary full">Create Event</button>
         </form>
     </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
     © Thiagaraja College of Engineering | Event Management System
 </footer>
 
-<!-- JS -->
 <script src="validation.js"></script>
-<script>
-// Show/hide form sections on navbar click
-const links = document.querySelectorAll('header nav a');
-const sections = document.querySelectorAll('.form-section');
-
-links.forEach(link => {
-    link.addEventListener('click', function(e){
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        sections.forEach(sec => sec.classList.add('hidden'));
-        const targetSection = document.getElementById(targetId);
-        if(targetSection) targetSection.classList.remove('hidden');
-        window.scrollTo({top: targetSection.offsetTop - 60, behavior: 'smooth'});
-    });
-});
-</script>
-
 </body>
 </html>

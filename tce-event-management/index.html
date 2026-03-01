@@ -1,109 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TCE EventHub</title>
-    <link rel="stylesheet" href="style.css">
+<title>College Events</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        <img src="assets/images/logo.png">
-        <h2>TCE EventHub</h2>
-    </div>
-    <nav>
-        <a href="#" onclick="showSection('home')">Home</a>
-        <a href="#" onclick="showSection('events')">Events</a>
-        <a href="#" onclick="showSection('studentLogin')">Student</a>
-        <a href="#" onclick="showSection('volunteerLogin')">Volunteer</a>
-        <a href="#" onclick="showSection('adminLogin')">Admin</a>
-    </nav>
-</header>
+<div class="nav">
+<a href="login.html">Login</a>
+<a href="student-register.html">Student Register</a>
+<a href="volunteer-register.html">Volunteer Register</a>
+</div>
 
-<section id="home" class="active">
-    <div class="hero">
-        <h1>Thiagarajar College of Engineering</h1>
-        <p>Centralized Event Management Portal</p>
-        <button onclick="showSection('events')">View Events</button>
-    </div>
-</section>
+<div class="container">
+<h2>Upcoming Events</h2>
+<div id="eventList"></div>
+</div>
 
-<section id="events">
-    <h2 class="center">All Events</h2>
-    <div class="event-container" id="eventList"></div>
-</section>
-
-<section id="studentRegister">
-    <div class="form-box">
-        <h2>Student Registration</h2>
-        <input type="text" id="name" placeholder="Full Name">
-        <input type="text" id="email" placeholder="Email (.tce required)">
-        <input type="text" id="regNumber" placeholder="Register Number (16 digits)">
-        <input type="text" id="phone" placeholder="Phone (10 digits)">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="registerStudent()">Register</button>
-        <p id="regError" class="error"></p>
-    </div>
-</section>
-
-<section id="studentLogin">
-    <div class="form-box">
-        <h2>Student Login</h2>
-        <input type="text" id="studentEmail">
-        <input type="password" id="studentPassword">
-        <button onclick="loginStudent()">Login</button>
-        <button onclick="showSection('studentRegister')">Register</button>
-        <p id="studentError" class="error"></p>
-    </div>
-</section>
-
-<section id="volunteerLogin">
-    <div class="form-box">
-        <h2>Volunteer Login</h2>
-        <input type="text" id="volEmail">
-        <input type="password" id="volPassword">
-        <button onclick="loginVolunteer()">Login</button>
-        <p id="volError" class="error"></p>
-    </div>
-</section>
-
-<section id="adminLogin">
-    <div class="form-box">
-        <h2>Admin Login</h2>
-        <input type="text" id="adminUser">
-        <input type="password" id="adminPass">
-        <button onclick="loginAdmin()">Login</button>
-        <p id="adminError" class="error"></p>
-    </div>
-</section>
-
-<section id="studentDashboard">
-    <div class="dashboard-box">
-        <h2>Student Dashboard</h2>
-        <button onclick="showSection('events')">View Events</button>
-        <button onclick="logout()">Logout</button>
-    </div>
-</section>
-
-<section id="volunteerDashboard">
-    <div class="dashboard-box">
-        <h2>Volunteer Dashboard</h2>
-        <button onclick="showSection('events')">View Events</button>
-        <button onclick="logout()">Logout</button>
-    </div>
-</section>
-
-<section id="adminDashboard">
-    <div class="form-box">
-        <h2>Create Event</h2>
-        <input type="text" id="eventTitle" placeholder="Event Title">
-        <input type="date" id="eventDate">
-        <input type="file" id="eventPoster" accept="image/*">
-        <button onclick="createEvent()">Create Event</button>
-        <button onclick="logout()">Logout</button>
-    </div>
-</section>
-
-<script src="validation.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

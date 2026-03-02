@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Login</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="container">
-<h2>Login</h2>
-<form id="loginForm">
-
-<select id="role">
-<option value="">Select Role</option>
-<option value="student">Student</option>
-<option value="volunteer">Volunteer</option>
-<option value="admin">Admin</option>
-</select>
-<small class="error"></small>
-
-<input type="email" id="loginEmail" placeholder="Email">
-<small class="error"></small>
-
-<input type="password" id="loginPass" placeholder="Password">
-<small class="error"></small>
-
-<button type="submit">Login</button>
-<div class="error" id="loginError"></div>
-
-</form>
-</div>
-
-<script src="script.js"></script>
+<head><link rel="stylesheet" href="style.css"></head>
+<body style="display:flex; justify-content:center; align-items:center; height:100vh; background: var(--tce-blue);">
+    <div class="card" style="width:350px; text-align:center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+        <h2 style="margin-bottom:10px;">Portal Login</h2>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:20px;">Access TCE EventHub Ecosystem</p>
+        <input type="email" id="email" placeholder="TCE Email (@tce.edu)" class="form-input">
+        <input type="password" id="pass" placeholder="Password" class="form-input">
+        <select id="role" class="form-input">
+            <option value="student">Student</option>
+            <option value="volunteer">Volunteer</option>
+            <option value="admin">Admin</option>
+        </select>
+        <button class="btn-portal" style="width:100%" onclick="login()">Enter Secure Portal</button>
+    </div>
+    <script>
+        function login() {
+            const e = document.getElementById('email').value;
+            if(e.includes('@tce.edu')) {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', e);
+                localStorage.setItem('userRole', document.getElementById('role').value);
+                window.location.href = 'index.html';
+            } else { alert("Please use your official TCE email address."); }
+        }
+    </script>
 </body>
 </html>

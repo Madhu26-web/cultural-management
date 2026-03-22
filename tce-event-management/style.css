@@ -17,56 +17,50 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .nav-links li { cursor: pointer; font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
 .auth-btn { background: var(--danger) !important; color: white !important; padding: 8px 15px; border-radius: 8px; }
 
-/* HERO */
-.hero-container { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-.hero-container h1 { font-size: 4.5rem; font-weight: 800; letter-spacing: -2px; line-height: 1.1; }
+/* CENTRALIZED HERO */
+.hero-container { height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.hero-container h1 { font-size: 5rem; font-weight: 800; letter-spacing: -2px; line-height: 1.1; }
 .hero-container h1 span { color: var(--tce-orange); }
-.hero-container p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 20px 0 40px; }
-.welcome-text { font-weight: 700; font-size: 1.2rem; margin-bottom: 20px; }
+.hero-container p { font-size: 1.2rem; color: var(--text-muted); max-width: 650px; margin: 25px 0 45px; }
 
 /* BUTTONS */
-.btn-group { display: flex; gap: 15px; }
+.btn-group { display: flex; gap: 15px; justify-content: center; }
 .btn-portal { background: var(--tce-blue); color: white; padding: 14px 35px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; transition: 0.3s; }
 .btn-rankings { background: white; color: var(--tce-blue); padding: 14px 35px; border-radius: 8px; font-weight: 600; border: 1px solid var(--tce-blue); cursor: pointer; }
 .btn-portal:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(15, 23, 42, 0.2); }
 
-/* GRID & CARDS */
-.page { display: none; padding: 60px 8%; text-align: center; }
-.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
-.card { background: white; padding: 25px; border-radius: 20px; border: 1px solid #e2e8f0; text-align: left; position: relative; }
+/* PAGES & CARDS */
+.page { padding: 60px 8%; text-align: center; }
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.card { background: white; padding: 30px; border-radius: 20px; border: 1px solid #e2e8f0; text-align: left; transition: 0.3s; }
+.card:hover { border-color: var(--tce-orange); }
 
 /* PASS MODAL */
-.modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.9); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 2000; }
-.pass-card-container { background: white; width: 350px; border-radius: 15px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 2000; }
+.pass-card-container { background: white; width: 350px; border-radius: 15px; overflow: hidden; }
 .pass-header { background: var(--tce-blue); color: white; padding: 20px; text-align: center; }
 .pass-body { padding: 30px; text-align: center; }
-.qr-placeholder { width: 120px; height: 120px; background: #f1f5f9; margin: 0 auto 20px; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.7rem; }
+.qr-placeholder { width: 130px; height: 130px; background: #f1f5f9; margin: 0 auto 20px; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.7rem; }
 .pass-footer-text { font-size: 0.7rem; color: var(--danger); font-weight: bold; margin-top: 15px; }
 
+/* MAP */
+.map-card { background: white; padding: 30px; border-radius: 25px; width: 480px; }
+.map-viewport { height: 250px; background: #e2e8f0; border-radius: 15px; position: relative; margin: 20px 0; overflow: hidden; }
+.venue-marker { position: absolute; font-size: 1.8rem; z-index: 10; transition: 0.5s ease; }
+.building { position: absolute; background: var(--tce-blue); color: white; padding: 5px 10px; font-size: 0.6rem; border-radius: 5px; }
+.it-dept { top: 20%; left: 15%; }
+.cse-dept { top: 20%; right: 15%; }
+.aud-dept { bottom: 20%; left: 40%; }
+
 /* SCANNER HUD */
-.scanner-container { max-width: 400px; margin: 0 auto; background: #000; border-radius: 25px; padding: 20px; }
-.cam-box { height: 300px; background: #111; border-radius: 15px; position: relative; overflow: hidden; }
-.scan-line { width: 100%; height: 2px; background: var(--success); position: absolute; animation: scanAnim 3s infinite; box-shadow: 0 0 15px var(--success); }
+.scanner-container { max-width: 400px; margin: 0 auto; background: #000; border-radius: 30px; padding: 25px; }
+.cam-box { height: 300px; background: #111; border-radius: 20px; position: relative; overflow: hidden; }
+.scan-line { width: 100%; height: 3px; background: var(--success); position: absolute; animation: scanAnim 3s infinite; }
 @keyframes scanAnim { 0%, 100% { top: 5%; } 50% { top: 95%; } }
-.scan-feedback-box { position: absolute; inset: 0; background: rgba(16, 185, 129, 0.9); display: none; align-items: center; justify-content: center; color: white; font-weight: bold; }
-.corner { position: absolute; width: 20px; height: 20px; border: 3px solid var(--success); }
+.scan-feedback-box { position: absolute; inset: 0; background: rgba(16, 185, 129, 0.9); display: none; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem; }
+.corner { position: absolute; width: 25px; height: 25px; border: 4px solid var(--success); }
 .top-left { top: 15px; left: 15px; border-right: 0; border-bottom: 0; }
 .top-right { top: 15px; right: 15px; border-left: 0; border-bottom: 0; }
 
-/* MAP */
-.map-card { background: white; padding: 25px; border-radius: 24px; width: 450px; }
-.map-viewport { height: 250px; background: #cbd5e1; border-radius: 15px; position: relative; margin: 15px 0; overflow: hidden; }
-.building { position: absolute; background: var(--tce-blue); color: white; padding: 4px; font-size: 0.5rem; border-radius: 4px; }
-.it-dept { top: 20%; left: 15%; } .cse-dept { top: 20%; right: 15%; } .aud-dept { bottom: 20%; left: 40%; }
-.venue-marker { position: absolute; font-size: 1.5rem; transition: 0.5s; }
-.red-glow { border: 3px solid var(--danger); box-shadow: 0 0 30px rgba(239, 68, 68, 0.5); }
-.alert-banner { background: var(--danger); color: white; padding: 8px; border-radius: 5px; font-size: 0.7rem; margin-bottom: 10px; font-weight: bold; }
-
 /* FORMS */
-.form-input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.9rem; }
-.checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-size: 0.8rem; }
-
-/* LEADERBOARD */
-.leaderboard-container { max-width: 600px; margin: 0 auto; text-align: left; }
-.progress-bg { background: #e2e8f0; height: 10px; border-radius: 10px; margin: 10px 0 20px; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--tce-blue); transition: 1s ease-in-out; }
+.form-input { width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; }

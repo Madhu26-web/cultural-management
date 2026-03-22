@@ -6,6 +6,7 @@
     <title>TCE EventHub | Official Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
@@ -20,14 +21,13 @@
             <li id="portal-link" style="display:none;" onclick="showPage('portal')">Dashboard</li>
             <li id="vol-link" style="display:none;" onclick="showPage('scanner')">Scanner</li>
             <li id="admin-link" style="display:none;" onclick="showPage('admin')">Admin Hub</li>
-            <li id="admin-create-link" style="display:none;" onclick="showPage('create-event')">Create</li>
             <li id="logout-nav" class="auth-btn" style="display:none;" onclick="logout()">Logout</li>
         </ul>
     </nav>
 
     <div id="map-modal" class="modal-overlay" style="display:none;">
         <div id="map-card" class="map-card">
-            <div class="map-header"><h3>Campus Navigator</h3><button class="close-btn" onclick="closeMap()">×</button></div>
+            <div class="map-header"><h3>Campus Navigator</h3><button onclick="closeMap()">×</button></div>
             <div id="red-alert-banner" class="alert-banner" style="display:none;">⚠️ CAPACITY FULL: REGISTRATION LOCKED</div>
             <div class="map-viewport">
                 <div class="campus-grid">
@@ -67,49 +67,29 @@
         <div class="hero-container">
             <h1>TCE <span>EventHub</span></h1>
             <p>Empowering Innovation. Celebrating Excellence. The official hub for Thiagaraja College of Engineering.</p>
-            <div class="welcome-text">Welcome, Student/Staff</div>
-            <div class="btn-group" id="home-auth-box">
+            <div id="home-auth-box">
                 <button class="btn-portal" onclick="window.location.href='login.html'">Sign In to Portal</button>
                 <button class="btn-rankings" onclick="showPage('leaderboard')">View Rankings</button>
             </div>
         </div>
     </section>
 
-    <section id="events" class="page">
+    <section id="events" class="page" style="display:none;">
         <div class="content-header"><h2>Upcoming Events</h2></div>
         <div class="event-grid" id="event-container"></div>
     </section>
 
-    <section id="gallery" class="page">
-        <div class="content-header"><h2>Event Gallery</h2></div>
-        <div class="gallery-grid" id="gallery-container"></div>
-    </section>
-
-    <section id="leaderboard" class="page">
+    <section id="leaderboard" class="page" style="display:none;">
         <div class="content-header"><h2>Live Rankings</h2></div>
         <div class="leaderboard-container" id="leaderboard-cont"></div>
     </section>
 
-    <section id="create-event" class="page">
-        <div class="form-container">
-            <div class="card">
-                <h3>Create New Event</h3>
-                <input type="text" id="new-ev-title" placeholder="Event Title" class="form-input">
-                <select id="new-ev-venue" class="form-input">
-                    <option value="IT Dept">IT Dept</option>
-                    <option value="CSE Dept">CSE Dept</option>
-                    <option value="Auditorium">Auditorium</option>
-                </select>
-                <input type="number" id="new-ev-cap" placeholder="Max Capacity (e.g. 50)" class="form-input">
-                <div class="checkbox-group">
-                    <input type="checkbox" id="new-ev-pass" checked> <label>Enable Pass Download</label>
-                </div>
-                <button class="btn-portal" style="width:100%" onclick="createNewEvent()">Publish Event</button>
-            </div>
-        </div>
+    <section id="portal" class="page" style="display:none;">
+        <div class="content-header"><h2>Student Dashboard</h2></div>
+        <div id="my-events-container" class="event-grid"></div>
     </section>
 
-    <section id="scanner" class="page">
+    <section id="scanner" class="page" style="display:none;">
         <div class="scanner-container">
             <div class="cam-box">
                 <div class="corner top-left"></div><div class="corner top-right"></div>
@@ -121,14 +101,109 @@
         </div>
     </section>
 
-    <section id="admin" class="page">
-        <div class="content-header"><h2>Live Attendance Monitor</h2></div>
-        <div id="admin-stats" class="event-grid"></div>
+    <script src="app.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCE EventHub | Official Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="showPage('home')">TCE.<span>EventHub</span></div>
+        <ul class="nav-links">
+            <li onclick="showPage('home')">Home</li>
+            <li onclick="showPage('events')">Events</li>
+            <li onclick="showPage('gallery')">Gallery</li>
+            <li onclick="showPage('leaderboard')">Leaderboard</li>
+            <li id="portal-link" style="display:none;" onclick="showPage('portal')">Dashboard</li>
+            <li id="vol-link" style="display:none;" onclick="showPage('scanner')">Scanner</li>
+            <li id="admin-link" style="display:none;" onclick="showPage('admin')">Admin Hub</li>
+            <li id="logout-nav" class="auth-btn" style="display:none;" onclick="logout()">Logout</li>
+        </ul>
+    </nav>
+
+    <div id="map-modal" class="modal-overlay" style="display:none;">
+        <div id="map-card" class="map-card">
+            <div class="map-header"><h3>Campus Navigator</h3><button onclick="closeMap()">×</button></div>
+            <div id="red-alert-banner" class="alert-banner" style="display:none;">⚠️ CAPACITY FULL: REGISTRATION LOCKED</div>
+            <div class="map-viewport">
+                <div class="campus-grid">
+                    <div class="building it-dept">IT Dept</div>
+                    <div class="building cse-dept">CSE Dept</div>
+                    <div class="building aud-dept">Auditorium</div>
+                    <div id="event-venue" class="venue-marker">📍</div>
+                </div>
+            </div>
+            <div class="map-footer">
+                <p id="venue-info">Venue: IT Department</p>
+                <button id="reg-confirm-btn" class="btn-portal" style="width:100%" onclick="confirmRegistration()">Confirm Registration</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="pass-modal" class="modal-overlay" style="display:none;">
+        <div id="pass-to-export" class="pass-card-container">
+            <div class="pass-header">
+                <h3>OFFICIAL ENTRY PASS</h3>
+                <small>TCE EVENTHUB 2026</small>
+            </div>
+            <div class="pass-body">
+                <div id="pass-qr-sim" class="qr-placeholder">QR CODE</div>
+                <h2 id="pass-event-name">Event Name</h2>
+                <p id="pass-user-email">user@tce.edu</p>
+                <div class="pass-footer-text">VALID FOR ONE ENTRY ONLY</div>
+            </div>
+        </div>
+        <div class="btn-group" style="margin-top:20px; flex-direction:column; width:350px;">
+            <button class="btn-portal" onclick="exportPass()">📥 Export as Image</button>
+            <button class="btn-rankings" onclick="closePass()">Close</button>
+        </div>
+    </div>
+
+    <section id="home" class="page">
+        <div class="hero-container">
+            <h1>TCE <span>EventHub</span></h1>
+            <p>Empowering Innovation. Celebrating Excellence. The official hub for Thiagaraja College of Engineering.</p>
+            <div id="home-auth-box">
+                <button class="btn-portal" onclick="window.location.href='login.html'">Sign In to Portal</button>
+                <button class="btn-rankings" onclick="showPage('leaderboard')">View Rankings</button>
+            </div>
+        </div>
     </section>
 
-    <section id="portal" class="page">
+    <section id="events" class="page" style="display:none;">
+        <div class="content-header"><h2>Upcoming Events</h2></div>
+        <div class="event-grid" id="event-container"></div>
+    </section>
+
+    <section id="leaderboard" class="page" style="display:none;">
+        <div class="content-header"><h2>Live Rankings</h2></div>
+        <div class="leaderboard-container" id="leaderboard-cont"></div>
+    </section>
+
+    <section id="portal" class="page" style="display:none;">
         <div class="content-header"><h2>Student Dashboard</h2></div>
         <div id="my-events-container" class="event-grid"></div>
+    </section>
+
+    <section id="scanner" class="page" style="display:none;">
+        <div class="scanner-container">
+            <div class="cam-box">
+                <div class="corner top-left"></div><div class="corner top-right"></div>
+                <div class="scan-line"></div>
+                <div id="scan-feedback" class="scan-feedback-box">✅ VERIFIED</div>
+            </div>
+            <input type="text" id="scan-input" placeholder="Manual Entry (e.g. IT-01)" class="form-input" style="margin-top:20px; background:#1e293b; color:white;">
+            <button class="btn-portal" onclick="processScan()" style="width:100%">Verify Attendance</button>
+        </div>
     </section>
 
     <script src="app.js"></script>

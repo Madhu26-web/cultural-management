@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="style.css"></head>
-<body style="display:flex; justify-content:center; align-items:center; height:100vh; background: var(--tce-blue);">
-    <div class="card" style="width:360px; text-align:center; border:none; box-shadow: 0 25px 50px rgba(0,0,0,0.3);">
-        <h2 style="margin-bottom:10px;">Portal Login</h2>
-        <p style="color:var(--text-muted); font-size:0.8rem; margin-bottom:25px;">Enter your TCE credentials</p>
-        <input type="email" id="email" placeholder="Email (@tce.edu)" class="form-input">
-        <select id="role" class="form-input">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body style="background:var(--tce-blue); display:flex; align-items:center; justify-content:center; height:100vh;">
+    <div class="card" style="width:400px; text-align:center;">
+        <h2>Portal Login</h2>
+        <p style="font-size:0.8rem; margin-bottom:20px;">Sample: student@tce.edu | admin@tce.edu</p>
+        <input type="email" id="l-email" placeholder="Institutional Email" class="form-input">
+        <select id="l-role" class="form-input">
             <option value="student">Student</option>
             <option value="volunteer">Volunteer</option>
-            <option value="admin">Admin</option>
+            <option value="admin">Administrator</option>
         </select>
-        <button class="btn-portal" style="width:100%; margin-top:10px;" onclick="doLogin()">Sign In</button>
+        <button class="btn-portal" onclick="auth()">Sign In</button>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-        function doLogin() {
-            const email = $('#email').val();
-            if(email.includes('@tce.edu')) {
+        function auth() {
+            const email = $('#l-email').val();
+            if(email.endsWith('@tce.edu')) {
                 localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('userRole', $('#role').val());
+                localStorage.setItem('userRole', $('#l-role').val());
                 window.location.href = 'index.html';
-            } else { alert("Use TCE email"); }
+            } else { alert("Please use @tce.edu email"); }
         }
     </script>
 </body>

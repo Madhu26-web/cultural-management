@@ -1,0 +1,81 @@
+// 1. Variables (Institutional Colors)
+$tce-blue: #1e293b;
+$tce-amber: #f59e0b;
+$success: #10b981;
+$bg: #f8fafc;
+$white: #ffffff;
+$text-muted: #64748b;
+
+// 2. Mixins
+@mixin card-style {
+  background: $white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 1px solid #f1f5f9;
+}
+
+// 3. Global Styles
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+body { background-color: $bg; color: $tce-blue; }
+
+// 4. Nested Navigation
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 8%; height: 70px; background: $white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky; top: 0; z-index: 1000;
+
+  .logo {
+    font-size: 1.5rem; font-weight: 800; cursor: pointer;
+    span { color: $tce-amber; }
+  }
+
+  .nav-links {
+    display: flex; gap: 30px; list-style: none;
+    li {
+      cursor: pointer; font-weight: 500; color: $text-muted;
+      transition: 0.3s;
+      &:hover { color: $tce-amber; transform: translateY(-2px); }
+    }
+  }
+}
+
+// 5. Layout & Components
+.container {
+  max-width: 1000px; margin: 40px auto; padding: 0 20px; text-align: center;
+}
+
+.card { @include card-style; margin: 20px auto; }
+
+// 6. Progress Bars
+.progress-wrapper {
+  margin-bottom: 25px; text-align: left;
+  .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
+  .bar-container {
+    height: 12px; background: #e2e8f0; border-radius: 10px; overflow: hidden;
+    .bar-fill { height: 100%; background: $tce-blue; transition: width 1s ease-in-out; }
+  }
+}
+
+// 7. Scanner Animation
+.scanner-box {
+  width: 280px; height: 280px; background: #000; margin: 20px auto;
+  position: relative; border-radius: 15px; overflow: hidden;
+  .laser {
+    width: 100%; height: 3px; background: $success; position: absolute;
+    box-shadow: 0 0 15px $success; animation: scan 2s infinite ease-in-out;
+  }
+}
+
+@keyframes scan { 0%, 100% { top: 5%; } 50% { top: 95%; } }
+
+.btn-portal {
+  background: $tce-blue; color: white; border: none; padding: 12px 25px;
+  border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%;
+  &:hover { background: $tce-amber; }
+}
+
+.form-input { width: 100%; padding: 12px; margin: 10px 0 20px; border: 1px solid #cbd5e1; border-radius: 8px; }
